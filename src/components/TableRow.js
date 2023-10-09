@@ -36,7 +36,7 @@ function TableRow({ participant }) {
         </div>
       </td>
 
-      <td className="Completions_both_Pathways_relative p-3 text-center">
+      <td className="Completions_both_Pathways_relative mob:hidden p-3 text-center">
         <div
           className={`m-auto w-fit rounded-3xl px-5 py-1 text-center ${
             participant["Total Completions of both Pathways"] == "Yes"
