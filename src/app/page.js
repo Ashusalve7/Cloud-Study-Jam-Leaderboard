@@ -5,17 +5,17 @@ import TableIndex from "@/components/Table.Index";
 export default function Home() {
   return (
     <>
-      {/* <Script
+      <Script
         src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.12.0/tsparticles.confetti.bundle.min.js"
         strategy="beforeInteractive"
       ></Script>
       <Script id="blast_effect">
         {
           `const end = Date.now() + 30 * 150;
-
+      
           // Google colors
           const colors = ["#4285F4", "#0F9D58", "#F4B400", "#DB4437"];
-
+      
           (function frame() {
             confetti({
               particleCount: 2,
@@ -24,7 +24,7 @@ export default function Home() {
               origin: { x: 0 },
               colors: colors,
             });
-
+      
             confetti({
               particleCount: 2,
               angle: 120,
@@ -32,14 +32,14 @@ export default function Home() {
               origin: { x: 1 },
               colors: colors,
             });
-
+      
             if (Date.now() < end) {
               requestAnimationFrame(frame);
             }
           })();
           `
         }
-      </Script> */}
+      </Script>
       <nav className="w-full  shadow-md relative ">
         <div className="bg-gray-900 text-blue-500 w-full m-auto text-center p-2 flex justify-center items-center">
           <div className="">
@@ -66,7 +66,7 @@ export default function Home() {
           </div>
 
           <div className="links mob:py-3 flex justify-center items-center space-x-5">
-            <Link href="https://chat.whatsapp.com/J1EjBNlkKRd5ONx4eQ57br">
+            <Link href="https://chat.whatsapp.com/HeiXEAgcktuGsShM06IOTa">
               <div className="cursor-pointer medium">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +80,7 @@ export default function Home() {
                 </svg>
               </div>
             </Link>
-            <Link href="https://www.linkedin.com/in/gdsc-poornima-university-34696528a/">
+            <Link href="https://www.linkedin.com/company/gdscpescoe/">
               <div className="cursor-pointer linkedin">
                 <svg
                   className="w-6"
@@ -94,7 +94,7 @@ export default function Home() {
                 </svg>
               </div>
             </Link>
-            <Link href="https://www.instagram.com/gdsc.poornima">
+            <Link href="https://instagram.com/gdsc_pescoe">
               <div className="cursor-pointer insta">
                 <svg
                   className="w-6"
@@ -108,7 +108,7 @@ export default function Home() {
                 </svg>
               </div>
             </Link>
-            <Link href="https://twitter.com/gdsc_poornima/">
+            <Link href="https://twitter.com/codersalman_">
               <div className="cursor-pointer twitter">
                 <svg
                   className="w-6"

@@ -1,8 +1,8 @@
 import React from "react";
 import TableRow from "./TableRow";
 
-function TableBody({ Participationdata, setParticipationdata }) {
-  // console.log(Participationdata)
+function TableBody({Participationdata, setParticipationdata }) {
+   // console.log(Participationdata)
 
   return (
     <tbody className="text-xs ">

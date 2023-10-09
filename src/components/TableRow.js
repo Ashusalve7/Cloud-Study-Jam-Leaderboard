@@ -50,7 +50,7 @@ function TableRow({ participant }) {
         </div>
       </td>
 
-      <td className="no_Courses_Completed mob:hidden p-3 text-center">
+      <td className="no_Courses_Completed mob:visible p-3 text-center">
         {participant["# of Courses Completed"]}
       </td>
 
