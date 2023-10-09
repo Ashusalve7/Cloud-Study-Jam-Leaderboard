@@ -78,13 +78,13 @@ function TableIndex() {
 
       <table className='mx-auto table-fixed m-5 scroll-auto  ' >
         <thead className='shadow-md text-sm bg-blue-500 text-gray-200 sticky top-2 z-10'>
-          <tr className='text-center '>
+          <tr className='text-center'>
             <td className="rounded-ss-lg w-80 p-2 border-r-2 border-r-gray-300">Name</td>
             {/* <td className="p-2 border-r-2 border-r-gray-300">Email</td> */}
             <td className="p-2 border-r-2 border-r-gray-300">Redemption Status</td>
             <td className="mob:hidden p-2 px-10 border-r-2 border-r-gray-300">Institution</td>
             <td className="mob:hidden p-2 border-r-2 border-r-gray-300 max-w-[150px]">Completions of both Pathways</td>
-            <td className="mob:visible p-2 border-r-2 border-r-gray-300 max-w-[150px]">No of Courses Completed</td>
+            <td className="mob:rounded-se-lg visible p-2 border-r-2 border-r-gray-300  max-w-[150px]">No of Courses Completed</td>
             <td className="mob:hidden p-2 border-r-2 border-r-gray-300 max-w-[150px]">Skill Badges Completed</td>
             <td className="mob:hidden rounded-se-lg p-2 max-w-[150px]">GenAI Completed</td>
             {/* <td className="p-2 border-r-2 border-r-gray-300">Enroll Date & Time</td> */}
