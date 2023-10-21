@@ -46,9 +46,10 @@ function TableIndex() {
       <div className="sec m-auto my-10 space-y-8 w-1/2 mob:w-full flex flex-col">
 
         <div className="message bg-yellow-100 text-yellow-700 p-5 rounded-lg shadow-lg shadow-yellow-300/30 text-center border border-yellow-300/30"><p className="text-center">-:Notification:-</p>
-          <p>Last Updated 10:12 pm
-            Friday, 20 October 2023 (IST)
-            Time in Parbhani, Maharashtra, India
+          <p>Last Updated 7:36 pm
+            Saturday, 21 October 2023 (IST)
+            Time in Parbhani, Maharashtra
+
           </p>
         </div>
 
