@@ -47,8 +47,8 @@ function TableIndex() {
 
         <div className="message bg-yellow-100 text-yellow-700 p-5 rounded-lg shadow-lg shadow-yellow-300/30 text-center border border-yellow-300/30"><p className="text-center">-:Notification:-</p>
           <p>Last Updated
-            6:05 pm
-            Monday, 23 October 2023 (IST)
+            6:04 pm
+            Tuesday, 24 October 2023 (IST)
             Time in Parbhani, Maharashtra
           </p>
         </div>
