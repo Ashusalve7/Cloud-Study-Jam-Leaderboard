@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import TableBody from './TableBody'
 import dataArr from '../../public/data.json'
 import Speedometer from "@/components/Speedometer";
@@ -7,6 +7,8 @@ import Speedometer from "@/components/Speedometer";
 
 function TableIndex() {
   // JSON file gone print here
+  const Ref = useRef(null);
+
   const imported_data = JSON.stringify(dataArr);
   const data = JSON.parse(imported_data);
   const [Participationdata, setParticipationdata] = useState([...data]);
@@ -33,10 +35,66 @@ function TableIndex() {
     // console.log(newArr);
     setParticipationdata(newArr);
   }
+  // const Ref = useRef(null);
+
+  // The state for our timer
+  const [timer, setTimer] = useState('00:00:00');
+
+  const getTimeRemaining = (e) => {
+    const total = Date.parse(e) - Date.parse(new Date());
+    const seconds = Math.floor((total / 1000) % 60);
+    const minutes = Math.floor((total / 1000 / 60) % 60);
+    const hours = Math.floor((total / 1000 / 60 / 60) % 24);
+    return {
+      total, hours, minutes, seconds
+    };
+  }
+
+  const startTimer = (e) => {
+    let { total, hours, minutes, seconds }
+        = getTimeRemaining(e);
+    if (total >= 0) {
+
+      // update the timer
+      // check if less than 10 then we need to
+      // add '0' at the beginning of the variable
+      setTimer(
+          (hours > 9 ? hours : '0' + hours) + ' HOURS |' +
+          (minutes > 9 ? minutes : '0' + minutes) + ' MINUTES |'
+          + (seconds > 9 ? seconds : '0' + seconds) + ' SECONDS'
+      )
+    }
+  }
+
+  const clearTimer = (e) => {
+
+    // If you adjust it you should also need to
+    // adjust the Endtime formula we are about
+    // to code next
+    setTimer('00:00:00');
+
+    // If you try to remove this line the
+    // updating of timer Variable will be
+    // after 1000ms or 1sec
+    if (Ref.current) clearInterval(Ref.current);
+    const id = setInterval(() => {
+      startTimer(e);
+    }, 1000)
+    Ref.current = id;
+  }
+
+  const getDeadTime = () => {
+    let deadline = new Date();
+
+    return 'Sun Oct 30 2023 14:00:00 GMT+0530 (India Standard Time)';
+
+  }
 
 
   useEffect(() => {
     calculateTotalEligibility();
+    clearTimer(getDeadTime());
+
   }, [])
 
 
@@ -45,12 +103,9 @@ function TableIndex() {
 
       <div className="sec m-auto my-10 space-y-8 w-1/2 mob:w-full flex flex-col">
 
-        <div className="message bg-yellow-100 text-yellow-700 p-5 rounded-lg shadow-lg shadow-yellow-300/30 text-center border border-yellow-300/30"><p className="text-center">-:Notification:-</p>
-          <p>Last Updated
-            6:51 pm
-            Sunday, 29 October 2023 (IST)
-            Time in Parbhani, Maharashtra
-          </p>
+        <div className="message bg-yellow-100 text-yellow-700 p-5 rounded-lg shadow-lg shadow-yellow-300/30 text-center border border-yellow-300/30"><p className="text-center">⏰ Last Few Hourse to go 🚀🎉</p>
+         <br></br>
+          <h2 className={'font-size:40px'} >{timer}</h2>
         </div>
 
         {/*<Speedometer*/}
