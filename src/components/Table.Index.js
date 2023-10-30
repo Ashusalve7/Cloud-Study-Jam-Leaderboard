@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import TableBody from './TableBody'
 import dataArr from '../../public/data.json'
 import Speedometer from "@/components/Speedometer";
+import Image from "next/image";
 // import Speedometer from './Speedometer';
 
 function TableIndex() {
@@ -108,6 +109,25 @@ function TableIndex() {
          <br></br>
           We appreciate your participation and dedication to learning about Google Cloud technologies. We hope you enjoyed the sessions and learned something new. We are excited to see you all at the next campaign. <br></br>
         </div>
+        <div class=" message bg-blue-100 text-yellow-700 p-5 rounded-lg shadow-lg shadow-blue-300/30 text-center border border-blue-300/30">
+          <div class="text-center">
+            <a href="https://certificate.gdscpescoe.tech/" target="_blank" rel="noopener noreferrer">
+            <p class={"m-auto"}>  <Image
+                  src="/assets/animation_lod91n0o_small.gif"
+                  alt="me"
+                  width="64"
+                  height="64"
+
+              />
+            </p>
+              <p class="text-2xl font-semibold text-blue-700">Get Certificate</p>
+            </a>
+          </div>
+        </div>
+
+
+
+
 
         {/*<Speedometer*/}
         {/*  completion={EligibleforSwags}*/}
