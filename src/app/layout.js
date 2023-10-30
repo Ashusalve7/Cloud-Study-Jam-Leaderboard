@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
         <div className="w-full  shadow-md relative ">
             <div className="bg-gray-900 text-blue-500 w-full m-auto text-center p-10 flex justify-center items-center">
                 <h1 className="text-white">
-                  Server Down | Please try again later
+                  Server Down | Please try again later 😢?
       </h1>
 
             </div>
