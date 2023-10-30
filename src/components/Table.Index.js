@@ -112,7 +112,8 @@ function TableIndex() {
         <div class=" message bg-blue-100 text-yellow-700 p-5 rounded-lg shadow-lg shadow-blue-300/30 text-center border border-blue-300/30">
           <div class="text-center">
             <a href="https://certificate.gdscpescoe.tech/" target="_blank" rel="noopener noreferrer">
-            <p class={"m-auto"}>  <Image
+            <p>  <Image
+                class={"m-auto"}
                   src="/assets/animation_lod91n0o_small.gif"
                   alt="me"
                   width="64"
