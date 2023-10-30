@@ -103,9 +103,10 @@ function TableIndex() {
 
       <div className="sec m-auto my-10 space-y-8 w-1/2 mob:w-full flex flex-col">
 
-        <div className="message bg-yellow-100 text-yellow-700 p-5 rounded-lg shadow-lg shadow-yellow-300/30 text-center border border-yellow-300/30"><p className="text-center">⏰ Last Few Hours to go 🚀🎉</p>
+        <div className="message bg-yellow-100 text-yellow-700 p-5 rounded-lg shadow-lg shadow-yellow-300/30 text-center border border-yellow-300/30"><p className="text-center">            Congratulations to all the participants of Google Cloud Study Jams 2023.
+          🚀🎉</p>
          <br></br>
-          <h2 className={'font-size:40px'} >{timer}</h2>
+          We appreciate your participation and dedication to learning about Google Cloud technologies. We hope you enjoyed the sessions and learned something new. We are excited to see you all at the next campaign. <br></br>
         </div>
 
         {/*<Speedometer*/}

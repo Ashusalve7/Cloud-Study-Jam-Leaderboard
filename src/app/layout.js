@@ -27,21 +27,22 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <link rel="icon" href="/favicon.ico" />
       <head></head>
-      {/*<body className={inter.className}>*/}
-      {/*  {children}*/}
-      {/*  <Analytics />*/}
-      {/*</body>*/}
-      <body>
-
-        <div className="w-full  shadow-md relative ">
-            <div className="bg-gray-900 text-blue-500 w-full m-auto text-center p-10 flex justify-center items-center">
-                <h1 className="text-white">
-                  Server Down | Please try again later 😢?
-      </h1>
-
-            </div>
-        </div>
+      <body className={inter.className}>
+        {children}
+        <Analytics />
       </body>
+
+      {/*<body>*/}
+
+      {/*  <div className="w-full  shadow-md relative ">*/}
+      {/*      <div className="bg-gray-900 text-blue-500 w-full m-auto text-center p-10 flex justify-center items-center">*/}
+      {/*          <h1 className="text-white">*/}
+      {/*            Server Down | Please try again later 😢?*/}
+      {/*</h1>*/}
+
+      {/*      </div>*/}
+      {/*  </div>*/}
+      {/*</body>*/}
     </html>
   );
 }
