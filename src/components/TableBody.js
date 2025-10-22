@@ -1,22 +1,22 @@
 import React from "react";
 import TableRow from "./TableRow";
 
-function TableBody({Participationdata, setParticipationdata }) {
-   // console.log(Participationdata)
-
+function TableBody({ Participationdata }) {
   return (
-    <tbody className="text-xs ">
+    <tbody className="text-xs">
       {Participationdata.length > 0 ? (
-        Participationdata.map((participant, index) => {
-          return (
-            <TableRow
-              key={participant["Student Email"] || 1}
-              participant={participant}
-            />
-          );
-        })
+        Participationdata.map((participant) => (
+          <TableRow
+            key={participant["User Email"] || participant["User Name"]}
+            participant={participant}
+          />
+        ))
       ) : (
-        <div className="text-lg">No User Found</div>
+        <tr>
+          <td colSpan="6" className="text-center p-4">
+            No User Found
+          </td>
+        </tr>
       )}
     </tbody>
   );

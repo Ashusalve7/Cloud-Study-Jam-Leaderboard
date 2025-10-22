@@ -1,159 +1,146 @@
-"use client"
-import React, { useState, useRef, useEffect } from 'react'
-import TableBody from './TableBody'
-import dataArr from '../../public/data.json'
-import Speedometer from "@/components/Speedometer";
-import Image from "next/image";
-// import Speedometer from './Speedometer';
+"use client";
+import React, { useState, useRef, useEffect } from "react";
+import TableBody from "./TableBody";
+import dataArr from "../../public/data.json";
 
 function TableIndex() {
-  // JSON file gone print here
   const Ref = useRef(null);
 
-  const imported_data = JSON.stringify(dataArr);
-  const data = JSON.parse(imported_data);
-  const [Participationdata, setParticipationdata] = useState([...data]);
+  // State for participants & search
+  const [Participationdata, setParticipationdata] = useState(dataArr);
   const [EligibleforSwags, setEligibleforSwags] = useState(0);
+  const [searchTerm, setSearchTerm] = useState("");
 
-
-
+  // Count eligible participants
   const calculateTotalEligibility = () => {
-    let total = 0;
-    data.forEach((ele) => {
-      ele["Total Completions of both Pathways"] == "Yes" && total++;
-    })
-    setEligibleforSwags(total)
-  }
+    const total = dataArr.filter(
+      (ele) => ele["All Skill Badges & Games Completed"] === "Yes"
+    ).length;
+    setEligibleforSwags(total);
+  };
 
+  // Search function
   const searchname = (name) => {
-    const newArr = [];
-    for (let i = 0; i < data.length; i++) {
-      let participant = data[i]["Student Name"].toLowerCase();
-      let match = participant.includes(name.toLowerCase());
-      if (match) newArr.push(data[i]);
+    setSearchTerm(name);
+    if (!name) return setParticipationdata(dataArr); // reset if empty
+    const filtered = dataArr.filter((item) =>
+      item["User Name"].toLowerCase().includes(name.toLowerCase())
+    );
+    setParticipationdata(filtered);
+  };
 
-    }
-    // console.log(newArr);
-    setParticipationdata(newArr);
-  }
-  // const Ref = useRef(null);
-
-  // The state for our timer
-  const [timer, setTimer] = useState('00:00:00');
+  // Timer logic
+  const [timer, setTimer] = useState("00:00:00");
 
   const getTimeRemaining = (e) => {
     const total = Date.parse(e) - Date.parse(new Date());
     const seconds = Math.floor((total / 1000) % 60);
     const minutes = Math.floor((total / 1000 / 60) % 60);
     const hours = Math.floor((total / 1000 / 60 / 60) % 24);
-    return {
-      total, hours, minutes, seconds
-    };
-  }
+    return { total, hours, minutes, seconds };
+  };
 
   const startTimer = (e) => {
-    let { total, hours, minutes, seconds }
-        = getTimeRemaining(e);
+    let { total, hours, minutes, seconds } = getTimeRemaining(e);
     if (total >= 0) {
-
-      // update the timer
-      // check if less than 10 then we need to
-      // add '0' at the beginning of the variable
       setTimer(
-          (hours > 9 ? hours : '0' + hours) + ' HOURS |' +
-          (minutes > 9 ? minutes : '0' + minutes) + ' MINUTES |'
-          + (seconds > 9 ? seconds : '0' + seconds) + ' SECONDS'
-      )
+        `${hours > 9 ? hours : "0" + hours} HOURS | ${
+          minutes > 9 ? minutes : "0" + minutes
+        } MINUTES | ${seconds > 9 ? seconds : "0" + seconds} SECONDS`
+      );
     }
-  }
+  };
 
   const clearTimer = (e) => {
-
-    // If you adjust it you should also need to
-    // adjust the Endtime formula we are about
-    // to code next
-    setTimer('00:00:00');
-
-    // If you try to remove this line the
-    // updating of timer Variable will be
-    // after 1000ms or 1sec
+    setTimer("00:00:00");
     if (Ref.current) clearInterval(Ref.current);
     const id = setInterval(() => {
       startTimer(e);
-    }, 1000)
+    }, 1000);
     Ref.current = id;
-  }
+  };
 
   const getDeadTime = () => {
-    let deadline = new Date();
-
-    return 'Sun Oct 30 2023 14:00:00 GMT+0530 (India Standard Time)';
-
-  }
-
+    return "Sun Oct 22 2025 14:00:00 GMT+0530 (India Standard Time)";
+  };
 
   useEffect(() => {
     calculateTotalEligibility();
     clearTimer(getDeadTime());
-
-  }, [])
-
+  }, []);
 
   return (
-    <div className='w-full relative px-3'>
-
+    <div className="w-full relative px-3">
       <div className="sec m-auto my-10 space-y-8 w-1/2 mob:w-full flex flex-col">
-        {/*<Speedometer*/}
-        {/*  completion={EligibleforSwags}*/}
-        {/*/>*/}
-
         <div className="info flex mob:flex-col mob:justify-center mob:items-center mob:space-y-10 mob:p-5 justify-evenly space-x-3 mob:space-x-0">
           <div className="eligibleforswag w-fit mob:w-full h-20 p-5 space-x-5 rounded-lg flex flex-row justify-evenly mob:justify-between items-center bg-green-50 shadow-lg shadow-green-300/30 border border-green-200">
-            <p className="text-center mob:text-start text-sm text-green-400">No of Eligible <br /> Participants for Certification</p>
-            <p className="no text-2xl border-l-2 border-l-green-700 pl-3 text-green-800">{EligibleforSwags}</p>
+            <p className="text-center mob:text-start text-sm text-green-400">
+              No of Eligible <br /> Participants for Certification
+            </p>
+            <p className="no text-2xl border-l-2 border-l-green-700 pl-3 text-green-800">
+              {EligibleforSwags}
+            </p>
           </div>
           <div className="eligibleforswag w-fit mob:w-full h-20 p-5 space-x-5 rounded-lg flex flex-row justify-evenly mob:justify-between items-center bg-blue-50 shadow-lg shadow-blue-300/30 border border-blue-200">
-            <p className="text-center mob:text-start text-sm text-blue-400">Total No of <br />Participants</p>
-            <p className="no text-2xl border-l-2 border-l-blue-700 pl-3 text-blue-800">{data.length}</p>
+            <p className="text-center mob:text-start text-sm text-blue-400">
+              Total No of <br />Participants
+            </p>
+            <p className="no text-2xl border-l-2 border-l-blue-700 pl-3 text-blue-800">
+              {dataArr.length}
+            </p>
           </div>
         </div>
 
-        <div className="search m-auto mt-3 mob:py-3 py-2  space-x-5  flex justify-start items-center shadow-lg shadow-blue-400/30 bg-blue-50 w-full rounded-full">
-          <div className="icon px-3 "><svg xmlns="http://www.w3.org/2000/svg" className='h-5' viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" fill="#3b82f6" /></svg></div>
+        <div className="search m-auto mt-3 mob:py-3 py-2 space-x-5 flex justify-start items-center shadow-lg shadow-blue-400/30 bg-blue-50 w-full rounded-full">
+          <div className="icon px-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5"
+              viewBox="0 0 512 512"
+            >
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                fill="#3b82f6"
+              />
+            </svg>
+          </div>
           <div className="input w-full">
             <input
-              onChange={(e) => {
-                searchname(e.target.value)
-              }}
-              className='bg-transparent mob:text-lg text-base outline-none w-full' type="text" name="searchbar" id="searchbar" placeholder='Search Your Name Here' />
+              type="text"
+              name="searchbar"
+              id="searchbar"
+              value={searchTerm}
+              onChange={(e) => searchname(e.target.value)}
+              className="bg-transparent mob:text-lg text-base outline-none w-full"
+              placeholder="Search Your Name Here"
+            />
           </div>
         </div>
       </div>
 
-      <table className='mx-auto table-fixed m-5 scroll-auto  ' >
-        <thead className='shadow-md text-sm bg-blue-500 text-gray-200 sticky top-2 z-10'>
-          <tr className='text-center'>
-            <td className="rounded-ss-lg w-80 p-2 border-r-2 border-r-gray-300">Name</td>
-            {/* <td className="p-2 border-r-2 border-r-gray-300">Email</td> */}
+      <table className="mx-auto table-fixed m-5 scroll-auto">
+        <thead className="shadow-md text-sm bg-blue-500 text-gray-200 sticky top-2 z-10">
+          <tr className="text-center">
+            <td className="rounded-ss-lg w-80 p-2 border-r-2 border-r-gray-300">
+              Name
+            </td>
             <td className="p-2 border-r-2 border-r-gray-300">Redemption Status</td>
-            <td className="mob:hidden p-2 px-10 border-r-2 border-r-gray-300">Institution</td>
-            <td className="mob:hidden p-2 border-r-2 border-r-gray-300 max-w-[150px]">Completions of both Pathways</td>
-            <td className="mob:rounded-se-lg visible p-2 border-r-2 border-r-gray-300  max-w-[150px]">No of Courses Completed</td>
-            <td className="mob:hidden p-2 border-r-2 border-r-gray-300 max-w-[150px]">Skill Badges Completed</td>
+            <td className="mob:hidden p-2 px-10 border-r-2 border-r-gray-300">
+              Institution
+            </td>
+            <td className="mob:hidden p-2 border-r-2 border-r-gray-300 max-w-[150px]">
+              Completions of both Pathways
+            </td>
+            <td className="mob:hidden p-2 border-r-2 border-r-gray-300 max-w-[150px]">
+              Skill Badges Completed
+            </td>
             <td className="mob:hidden rounded-se-lg p-2 max-w-[150px]">GenAI Completed</td>
-            {/* <td className="p-2 border-r-2 border-r-gray-300">Enroll Date & Time</td> */}
-            {/* <td className="p-2 border-r-2 border-r-gray-300">Enroll. Status</td> */}
-            {/* <td className='p-2 border-r-2 border-r-gray-300'>Profile URL</td> */}
           </tr>
         </thead>
-        <TableBody
-          Participationdata={Participationdata}
-          setParticipationdata={setParticipationdata}
-        />
+        <TableBody Participationdata={Participationdata} />
       </table>
-
     </div>
-  )
+  );
 }
 
-export default TableIndex
+export default TableIndex;
