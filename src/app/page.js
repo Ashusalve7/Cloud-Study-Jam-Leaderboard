@@ -45,7 +45,7 @@ export default function Home() {
           <div className="">
             <Image src="/assets/cloudLg.png" alt="me" width="40" height="40" />
           </div>
-          <p className="">Google Cloud STUDY JAMS 23 - 24</p>
+          <p className="">Google Cloud STUDY JAM 25 - 26</p>
         </div>
 
         <div className="p-3 flex mob:flex-col m-auto max-w-6xl justify-between items-center">
@@ -59,14 +59,14 @@ export default function Home() {
               />
             </div>
             <div className="text flex flex-col justify-start items-start">
-              <p className="text-base">Google Devloper Student Club</p>
+              <p className="text-base">Google Devloper Group on Campus</p>
               <p className="text-xs">PES College of Engineering - Aurangabad
               </p>
             </div>
           </div>
 
           <div className="links mob:py-3 flex justify-center items-center space-x-5">
-            <Link href="https://chat.whatsapp.com/HeiXEAgcktuGsShM06IOTa">
+            <Link href="https://chat.whatsapp.com/DrLfhEwCgy6E9RKivBmPDI?mode=wwt">
               <div className="cursor-pointer medium">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -94,7 +94,7 @@ export default function Home() {
                 </svg>
               </div>
             </Link>
-            <Link href="https://instagram.com/gdsc_pescoe">
+            <Link href="https://www.instagram.com/gdg_pescoe?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
               <div className="cursor-pointer insta">
                 <svg
                   className="w-6"
